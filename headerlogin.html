@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            margin: 0;
+        }
+        .container1{
+            height:100vh ;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+        }
+        .login{
+            width: 450px;
+            border: solid 2px black;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #pp{
+              margin-bottom: 10px;
+        }
+        .lbox{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+            height: 50px;
+            width: 100%;
+            background-color: mediumblue;
+        }
+        .details{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+           /* border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;*/
+            height: 100%;
+            width: 100%;
+            background-color: blueviolet;
+        }
+        .head{
+            color: aliceblue;
+        }
+        .details{
+            color: aliceblue;
+        }
+        #pname,#pid,#pp{
+            border-radius:30px;
+             border-style: none;
+             height: 30px;
+             width: 320px;
+            
+        }
+          #pname,#pid,#pp:active{
+              border-style: none;
+              border: none;
+          }
+          .btn{
+            color: aliceblue;
+            background-color:mediumblue ;
+            margin-bottom:10px ;
+            height: 35px;
+            width: 80px;
+            border-radius: 5px;
+        }
+        .signup{
+               height:100%;
+               width:100%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               flex-direction: row;
+               justify-content: space-around;
+        }
+        .remember{
+            display:flex;
+        }
+        .sb{
+            color: aliceblue;
+            background-color: mediumblue;
+        }
+        .container2{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          
+        }
+           .mm{
+            width: 450px;
+            border: solid 2px black;
+            border-radius: 15px;
+    
+              
+           }
+           .sbox{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+               height:50px;
+               width: 100%;
+               background-color: mediumblue;
+               color: aliceblue;
+               border-top-left-radius: 13px;
+               border-top-right-radius: 13px;
+
+           }
+           .sDetails{
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             flex-direction: column;
+             background-color: blueviolet;
+             color: aliceblue;
+           }
+           #P{
+            margin-bottom: 20px;
+           }
+           .SP{
+            height:50px;
+            width: 100%;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+           }
+           .spb{
+            height: 35px;
+            width: 80px;
+            border-radius: 5px;
+            background-color: mediumblue;
+            color: aliceblue;
+           }
+           #N,#P,#E{
+            border-radius: 30px;
+            border:none;
+            height: 30px;
+            width: 320px;
+           }
+
+    </style>
+</head>
+<body>
+
+    <div class="container1">
+           <div class="login">
+          <div class="lbox"><h2 class="head">Login Page</h2></div>  
+          <div class="details">
+             <p>Enter Your Name:</p> 
+                <input type="text" name="pname" id="pname" placeholder="Enter Your Name " required>
+                
+                 <p>Enter Your Password:</p> 
+                <input type="password" name="pp" id="pp" placeholder="Enter Your Password"  required>
+                 <button type="button" class="btn" id="loginButton" >Log in </button>
+                  </div>
+              <div class="signup">
+                   <div class="remember"><input type="checkbox" name="cb" id="cb"><p class="cp" >Remember me</p></div>  
+                     <button type="button" class="btn" id="sbtn">Sign Up</button>
+              </div>
+           </div>
+       </div>
+     <div class="container2">
+         <div class="mm">
+            <div class="sbox">
+                Sign UP
+            </div>
+            <div class="sDetails">
+                <p>Enter Your Name</p>
+                <input type="text" name="nt" id="N" placeholder="Enter Your Name" required>
+                <p>Enter Your Email</p>
+                <input type="email" name="ne" id="E" placeholder="Enter Your Email id" required>
+                <p>Enter Your Password</p>
+                <input type="password" name="np" id="P" placeholder="Enter your Password" required>
+            </div>
+            <div class="SP">
+                <button type="button" class="spb">Sign Up</button>
+            </div>
+         </div>  
+        </div>
+    <Script>
+        let container1=document.querySelector(".container1") 
+        let logInButton= document.querySelector("#loginButton");
+        let signUpButton =document.querySelector("#sbtn");
+        let container2=document.querySelector(".container2");
+        container2.style.display="none";
+       
+        
+             signUpButton.addEventListener("click",()=>{
+               container1.style.display="none";
+               container2.style.display="flex";
+             })
+             let signUpButton2=document.querySelector(".spb");
+             signUpButton2.addEventListener("click",()=>{
+                let sNameInput=document.querySelector("#N");
+                let sEmailIdInput=document.querySelector("#E");
+                let sPasswordInput=document.querySelector("#P");
+                
+                let name=sNameInput.value.trim();
+                let email=sEmailIdInput.value.trim();
+                let password=sPasswordInput.value.trim();
+                const user={name,email,password};
+                localStorage.setItem("regesteredUser",JSON.stringify(user));
+                if(name===""|| email==="" || password===""){
+                    alert("Enter Details Perfectly");
+                    return;
+                }
+                else{
+                    sNameInput.value="";
+                    sEmailIdInput.value="";
+                    sPasswordInput.value="";
+                    container2.style.display="none";
+                    container1.style.display="flex";
+                    alert("Sign Up successfull");
+                }
+                
+             })
+             logInButton.addEventListener("click",()=>{
+
+        let nameInput = document.querySelector("#pname");
+        let passwordInput = document.querySelector("#pp");
+
+        let uName = nameInput.value.trim();
+        let uPassword = passwordInput.value.trim();
+        
+
+        if(uName==="" || uPassword===""){
+            alert("Enter details perefectly");
+        }
+        let storedUser=localStorage.getItem("regesteredUser");
+
+        if(!storedUser){
+            alert("Do sign Up 1st");
+        }
+        const user=JSON.parse(storedUser);
+          if(uName===user.name && uPassword===user.password)
+        {
+            nameInput.value="";
+            passwordInput.value="";
+            window.location.href="header.html";
+        }
+        else{
+            alert("invalid details");
+        }
+        
+        })
+    </Script>
+    
+</body>
+</html>
