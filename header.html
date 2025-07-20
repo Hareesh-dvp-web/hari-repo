@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+        body{
+            background-color: cadetblue;
+        }
+        .main{
+            top:0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: greenyellow;
+            height: 100px;
+            width:100%;
+            position:fixed;
+            border-bottom-left-radius:10px ;
+            border-bottom-right-radius: 10px;
+        }
+        .main:hover{
+            box-shadow:0px 0px  10px 10px lightcyan;
+        }
+     .img{
+        display: flex;
+        flex-direction: row;
+        margin-top: 150px;
+        }
+        .imgs{
+            height:400px ;
+            width: 400px;
+            
+            border: solid 2px transparent;
+            border-radius:10px ;
+            margin-left: 40px;
+
+        }
+        .imgs:hover{
+            border: solid 2px black;
+            border-radius: 10px;
+            box-shadow:0px 0px 10px 10px white ;
+            transform: scale(1.03);
+           transition: 0.19s;
+            z-index:1;
+            
+        }
+        
+        #rashmika{
+            margin-left: 80px;
+        }
+        .para{
+            margin-top: -25px;
+        }
+          .li{
+            list-style-type:none ;
+          }
+          .next{
+            height: 35px;
+            width: 80px;
+            color: aliceblue;
+            background-color: mediumblue;
+            margin-bottom: 15px;
+            margin-left: 1350px;
+            border-radius: 5px;
+          }
+          .nbtn{
+
+          }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar">
+                  <p class="para">Neek Kavalisindi Naa Daggara Undi...😍</p>       
+        </nav>
+        <div class="options">
+            <ul>
+                <li class="li"></li>
+                <li class="li"></li>
+                <li class="li"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="img">
+       <a href="https://www.yamaha-motor-india.com/"> <img src="yamahafzsf1v4dlx.webp" alt="no img" class="imgs"></a>
+       <a href="https://en.wikipedia.org/wiki/Donald_Trump"> <img src="trump.jpg" alt="" class="imgs"></a>
+        <a href="https://youtu.be/m7gCn9u9bM4?si=iRfAuYkH6JxgRRg4"><img src="crushmika.jpg" alt="" id="rashmika" class="imgs"></a>
+    </div>
+    <div class="img">
+       <a href="https://youtu.be/Xbizke4zftY?si=csKeV5MHBk_j-dsf"><img src="tripthi.jpg" alt="" id="rashmika" class="imgs"></a>
+    
+    </div>
+    <div class="nbtn">
+        <button type="button" class="next"> Next </button>
+    </div>
+    <script>
+        let nextButton=document.querySelector(".next");
+        nextButton.addEventListener("click",()=>{
+            window.location.href="todolist.html";
+        })
+    </script>
+</body>
+</html>
