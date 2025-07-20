@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+     <style>
+        *{
+        
+            margin: 0;
+            margin-bottom: 10px;
+            padding: 0;
+            color: #FFFFFF;
+            border-radius: 5%;
+            
+        }
+       html, body{
+        height: 100vh;
+            background-color:;
+        }
+      #box{
+        margin: 5px;
+        width: 250px;
+        background-color:#26262B;
+        margin-left:470px;
+        margin-top: 140px;
+        border: 2px solid transparent;
+        }
+        #box:hover{
+            border: 2px solid whitesmoke;
+        }
+  #h2{
+    text-align: center;
+  }
+  #type{
+    margin: 5px;
+    margin-top: 15px;
+    height: 40px;
+    border: none;
+    margin-left: 5px;
+    background-color: dimgray;
+  }
+  #btn1{
+    background-color: blueviolet;
+    margin-left: 5px;
+    margin-top: 15px;
+    height: 40px;
+    width: 60px;
+    border: none;
+ }
+ .color{
+    background-color: #FFF7;
+ }
+ #btn:hover{
+            border: 2px solid whitesmoke;
+        }
+        #type:hover{
+            border: 2px solid whitesmoke;
+        }
+        #tools-list {
+            margin: 10px;
+        }
+        .btn2{
+            padding: 3px;
+        }
+        button{
+            background-color: red;
+            height: 30px;
+            width: 50px;
+            border: none ;
+
+        
+        }n
+        #tools-list{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+          }
+          li{
+            display: flex;
+            justify-content: space-between;
+          }
+          footer{
+            position: fixed;
+            height: 100px;
+            width: 100%;
+            bottom:-10px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           background-color: blueviolet;
+
+          }
+     </style>
+
+</head>
+<body>
+       <div id="box">
+            <h2 id="h2">To Do List</h2>
+            <div>
+            <label for="data"></label>
+            <input type="text" name="" id="type" class="type color" placeholder="Add a new task">
+            <button id="btn1">Add Task</button>
+            <ul id="tools-list">
+                </ul>
+            </div>
+       </div>
+       <footer>
+             <h3>This is the end of the website......</h3> 
+       </footer>
+
+    <script>
+      /*let button=document.querySelector(".btn1");
+button.addEventListener("click",()=>{
+    button.style.backgroundColor="pink"
+});*/
+
+   document.addEventListener("DOMContentLoaded",()=>{
+   let input =document.getElementById("type");
+   let button= document.getElementById("btn1");
+   let ul=document.getElementById("tools-list");
+
+   let tasks= JSON.parse(localStorage.getItem("tasks"))||[]   // let tasks=[]  by using this also you can execute the code
+  tasks.forEach(task=> rendertask(task));
+
+   button.addEventListener("click",()=>{
+         let todoinput= input.value;
+         const newtask={
+            id:Date.now(),
+            text:todoinput,
+           // completed:false
+         };
+
+       tasks.push(newtask);
+       savetasks();
+       rendertask(newtask)
+       input.value = "";
+       console.log(tasks);
+       });
+
+          function rendertask(task) {
+            const li = document.createElement("li");
+            li.setAttribute("data-id",task.id);
+            li.innerHTML= `<span> ${task.text}</span>
+            <button>delete</button>`;
+            ul.append(li);
+            li.querySelector("button").addEventListener("click",(e)=>{
+               e.stopPropagation();
+              tasks= tasks.filter((t)=>t.id !== task.id);
+
+               savetasks();
+               li.remove();
+            })
+            li.addEventListener("click",()=>{
+               let query = encodeURIComponent(task.text);
+               window.open(`https://www.google.com/search?q=${query}`, '_blank');
+               
+           })
+            
+          }
+       function savetasks (){
+          localStorage.setItem('tasks',JSON.stringify(tasks));
+       }
+   })
+    </script>
+</body>
+</html>
