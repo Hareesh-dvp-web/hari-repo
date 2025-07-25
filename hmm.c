@@ -13,6 +13,8 @@ int main() {
                     printf("index locations are %d and %d\n" ,i, j);
                 }
             }
+            if(arr[i]==target){
+                    printf("index location is %d ",i);
         }
     }
     return 0;
